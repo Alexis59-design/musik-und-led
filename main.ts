@@ -1,6 +1,7 @@
 let strip = neopixel.create(DigitalPin.P0, 24, NeoPixelMode.RGBW)
 strip.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
 strip.show()
+basic.showString(" hello luca i'm playing Piano ")
 basic.showLeds(`
     # . # . #
     # . # . #
@@ -8,6 +9,11 @@ basic.showLeds(`
     # . # . #
     # # # # #
     `)
+music.play(music.stringPlayable("C5 C E B G G F A ", 120), music.PlaybackMode.UntilDone)
+music.play(music.stringPlayable("C5 B A G G A B C5 ", 120), music.PlaybackMode.UntilDone)
+music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
+basic.showIcon(IconNames.Happy)
+basic.showString(" was that nice yes it was")
 basic.forever(function () {
     if (input.buttonIsPressed(Button.A)) {
         strip.shift(1)
